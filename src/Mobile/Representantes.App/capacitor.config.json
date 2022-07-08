@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Representantes.App",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

@@ -1,0 +1,29 @@
+ion-grid{
+  height: 100%;
+}
+
+.ion-item-login{
+  --background: #118c4e2d;
+  padding-top: 0.4em;
+}
+
+.item-inner{
+  border-style: none;
+  --background: #118c4e2d;
+}
+
+.login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.shadow-blue{
+  --border-radius: 25px;
+  --box-shadow: 0px 14px 25px #118c4eab;
+}
+
+.btn-wrapper {
+  text-align: center;
+}

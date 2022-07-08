@@ -1,0 +1,7 @@
+{
+  "name": "Representantes.App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

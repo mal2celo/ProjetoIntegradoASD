@@ -1,0 +1,14 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+SHOW_PERSON_PORTRAIT()
+
+Person(representante,"Representante","Um representante de inssumos agrícolas em atendimento a uma fazenda.")
+Person(administrador,"Administrador","Um funcionário da empresa responsável pela análise dos pedidos.")
+
+System(backend,"Sistema de Pedidos Off-line para Insumos Agrícolas","Permite que os representantes possam cadastrar pedidos mesmo com a ausência de conexão com a Internet.")
+
+Rel(representante,backend,"Cadastra os pedidos e envia para o sistema")
+Rel(administrador,backend,"Analisa os peditos e aprova ou reprova")
+
+@enduml
