@@ -16,16 +16,32 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'consultar',
+    path: 'consultar-pedidos',
     loadChildren: () => import('./pages/pedidos/consultar/consultar.module').then( m => m.ConsultarPageModule)
   },
   {
-    path: 'manter',
+    path: 'manter-pedidos',
     loadChildren: () => import('./pages/pedidos/manter/manter.module').then( m => m.ManterPageModule)
   },
   {
     path: 'principal',
     loadChildren: () => import('./pages/principal/principal.module').then( m => m.PrincipalPageModule)
+  },
+  {
+    path: 'consultar-produtos',
+    loadChildren: () => import('./pages/produtos/consultar/consultar.module').then( m => m.ConsultarPageModule)
+  },
+  {
+    path: 'sincronizar',
+    loadChildren: () => import('./pages/sincronizar/sincronizar.module').then( m => m.SincronizarPageModule)
+  },
+  {
+    path: 'sair',
+    loadChildren: () => import('./pages/sair/sair.module').then( m => m.SairPageModule)
+  },
+  {
+    path: 'item-pedido',
+    loadChildren: () => import('./pages/pedidos/item-pedido/item-pedido.module').then( m => m.ItemPedidoPageModule)
   }
 ];
 

@@ -1,9 +1,27 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>consultar</ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Consultar Pedidos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let pedido of listPedidos" (click)="detalhePedido(pedido.id)">
+      <ion-label class="ion-text-wrap">
+        <h3>Pedido Nº: {{ pedido.id }}</h3>
+        <h3>Data: {{ pedido.data | date: 'dd/MM/yyyy'}}</h3>
+        <h3>Status: {{ pedido.desc_status }}</h3>
+        <h3>Cliente: {{ pedido.nome_cliente }}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="novoPedido()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)='fecharModal()'>
+        <ion-icon name='close'></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-title>
+      Item Pedido
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <div>
+          <form [formGroup]="itemPedidoFormGroup">
+            <ion-row class="item-formulario">
+
+              <!--Campo Cliente-->
+              <ion-col size="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+                <ion-label position="fixed">Produto</ion-label>
+                <ion-item lines="full">
+                  <ion-label></ion-label>
+                  <ion-select class="select-full-width" [interfaceOptions]="{header:'Produto'}" [(ngModel)]="model.produto_id" name="produto_id"
+                    formControlName="produto_id" cancelText="Cancelar">
+                    <ion-select-option *ngFor="let item of listProdutos" [value]="item.id">
+                      {{item.codigo}} - {{item.descricao}}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                <ion-label position="fixed">Valor Unitário</ion-label>
+                <ion-item lines="full">
+                  <ion-input type="number" name="preco" formControlName="preco" [(ngModel)]="model.preco">
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                <ion-label position="fixed">Quantidade</ion-label>
+                <ion-item lines="full">
+                  <ion-input type="number" name="quantidade" formControlName="quantidade" [(ngModel)]="model.quantidade">
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+
+              <!--Campo Observacao-->
+              <ion-col size="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+                <ion-label position="fixed">Observação</ion-label>
+                <ion-item lines="full">
+                  <ion-textarea name="observacao" formControlName="observacao" [(ngModel)]="model.observacao"></ion-textarea>
+                </ion-item>
+              </ion-col>
+
+            </ion-row>
+
+            <ion-row class="item-formulario">
+              <ion-col size="12" size-sm="12" push-md="3" size-md="6" push-lg="4" size-lg="4" push-xl="4" size-xl="4">
+                <ion-button icon-start size="large" expand="block" (click)="salvar()">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                  Salvar
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-content>
+  

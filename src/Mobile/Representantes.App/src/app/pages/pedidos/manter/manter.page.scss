@@ -1,0 +1,21 @@
+.select-full-width {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 0px !important;
+}
+
+ion-item {
+  --padding-start: 0px;
+  --padding-end: 0px;
+  --inner-padding-start: 0px;
+  --inner-padding-end: 0px;
+}
+
+.my-grid {
+  height: 100% !important;
+}
+.parent-row {
+  height: 100% !important;
+  align-items: center !important;
+  justify-content: center !important;
+}

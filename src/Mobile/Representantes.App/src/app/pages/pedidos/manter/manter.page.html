@@ -1,9 +1,98 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>manter</ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="principal"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Manter Pedido</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid>
 
+    <ion-row>
+      <ion-col>
+        <div>
+
+          <form [formGroup]="pedidoFormGroup">
+            <ion-row class="item-formulario">
+
+              <ion-col size="12" size-sm="12" size-md="12" size-lg="12" size-xl="12" *ngIf="model.id > 0">
+                  <h2 block text-left><b>Pedido Nº {{model.id}}</b></h2>
+              </ion-col>
+
+              <!--Campo Data-->
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                <ion-item lines="full" (click)='getData()'>
+                  <ion-label position="stacked">Data do Pedido</ion-label>
+                  <span block text-left>{{model.data | date: 'dd/MM/yyyy'}}</span>
+                </ion-item>
+              </ion-col>
+
+              <!--Campo Cliente-->
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+                <ion-item lines="full" class="no-ion-padding">
+                  <ion-label position="stacked">Cliente</ion-label>
+                  <ion-select class="select-full-width" [interfaceOptions]="{header:'Cliente'}" [(ngModel)]="model.cliente_id" name="cliente_id"
+                    formControlName="cliente_id" cancelText="Cancelar">
+                    <ion-select-option *ngFor="let item of listClientes" [value]="item.id">
+                      {{item.nome}}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+
+              <!--Campo Observacao-->
+              <ion-col size="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+                <ion-item lines="full">
+                  <ion-label position="stacked">Observação</ion-label>
+                  <ion-textarea name="observacao" formControlName="observacao" [(ngModel)]="model.observacao"></ion-textarea>
+                </ion-item>
+              </ion-col>
+
+            </ion-row>
+          </form>
+
+        <ion-grid class="my-grid" *ngIf="model.id > 0" >
+          <ion-row class="parent-row">
+            <ion-col size="10"><h1>Itens do pedido</h1></ion-col>
+            <ion-col size="2">
+              <div class="ion-text-end">
+                <ion-button icon-start size="large" fill="clear" (click)="informarItemPedido(null)">
+                  <ion-icon name="add-circle-outline"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="parent-row">
+            <ion-col size="12">
+              <ion-list>
+                <ion-item *ngFor="let pedido of listItems" (click)="detalheItemPedido(pedido.id)">
+                  <ion-label class="ion-text-wrap">
+                    <h3>Descrição: {{ pedido.descricao }}</h3>
+                    <h3>Quantidade: {{ pedido.quantidade}}</h3>
+                    <h3>Valor Unitário: {{ pedido.valor_unitario | number:'1.2-2'}}</h3>
+                    <h3>Valor Total: {{ pedido.valor_total | number:'1.2-2'}}</h3>
+                  </ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        
+
+        <ion-row class="item-formulario">
+          <ion-col size="12" size-sm="12" push-md="3" size-md="6" push-lg="4" size-lg="4" push-xl="4" size-xl="4">
+            <ion-button icon-start size="large" expand="block" (click)="salvar()">
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+              Salvar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 </ion-content>

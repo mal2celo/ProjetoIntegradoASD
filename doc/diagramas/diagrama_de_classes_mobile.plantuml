@@ -1,0 +1,38 @@
+@startuml Diagrama de Classe Mobile
+skinparam SameClassWidth true
+
+class Pedido {
+  id: number
+  cliente_id: number
+  data: string
+  status: number
+  observacao: string
+}
+
+class ItemPedido {
+  id: number
+  pedido_id: number
+  produto_id: number
+  preco: number
+  quantidade: number
+  observacao: string
+}
+
+class Produto {
+  id: number
+  codigo: number
+  descricao: string
+  preco: number
+}
+
+class Cliente {
+  id: number
+  nome: string
+  endereco: string
+}
+
+Cliente "1" <-- "0..*" Pedido
+Pedido "1" --> "1..*" ItemPedido
+ItemPedido "0..*" --> "1" Produto
+
+@enduml
