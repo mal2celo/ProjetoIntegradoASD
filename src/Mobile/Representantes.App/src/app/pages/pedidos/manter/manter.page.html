@@ -71,16 +71,14 @@
                   <ion-label class="ion-text-wrap">
                     <h3>Descrição: {{ pedido.descricao }}</h3>
                     <h3>Quantidade: {{ pedido.quantidade}}</h3>
-                    <h3>Valor Unitário: {{ pedido.valor_unitario | number:'1.2-2'}}</h3>
-                    <h3>Valor Total: {{ pedido.valor_total | number:'1.2-2'}}</h3>
+                    <h3>Valor Unitário: {{ pedido.valor_unitario | currency : 'R$' }}</h3>
+                    <h3>Valor Total: {{ pedido.valor_total | currency : 'R$' }}</h3>
                   </ion-label>
                 </ion-item>
               </ion-list>
             </ion-col>
           </ion-row>
         </ion-grid>
-
-        
 
         <ion-row class="item-formulario">
           <ion-col size="12" size-sm="12" push-md="3" size-md="6" push-lg="4" size-lg="4" push-xl="4" size-xl="4">

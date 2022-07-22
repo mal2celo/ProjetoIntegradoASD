@@ -8,5 +8,40 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col class="menu_principal" size="6" size-sm="6" size-md="4" size-lg="3" size-xl="3">
+        <ion-card [routerLink]="'/consultar-pedidos'">
+          <div class="ion-text-center ion-padding">
+            <ion-icon class="ion-text-center" size="large" name="bag-handle-outline"></ion-icon>
+            <h3 class="ion-text-center">Pedidos</h3>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col class="menu_principal" size="6" size-sm="6" size-md="4" size-lg="3" size-xl="3">
+        <ion-card [routerLink]="'/consultar-produtos'">
+          <div class="ion-text-center ion-padding">
+            <ion-icon class="ion-text-center" size="large" name="cube-outline"></ion-icon>
+            <h3 class="ion-text-center">Produtos</h3>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col class="menu_principal" size="6" size-sm="6" size-md="4" size-lg="3" size-xl="3">
+        <ion-card [routerLink]="'/sincronizar'">
+          <div class="ion-text-center ion-padding">
+            <ion-icon class="ion-text-center" size="large" name="swap-vertical-outline"></ion-icon>
+            <h3 class="ion-text-center">Sincronizar</h3>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col class="menu_principal" size="6" size-sm="6" size-md="4" size-lg="3" size-xl="3">
+        <ion-card [routerLink]="'/sair'">
+          <div class="ion-text-center ion-padding">
+            <ion-icon class="ion-text-center" size="large" name="exit-outline"></ion-icon>
+            <h3 class="ion-text-center">Sair</h3>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

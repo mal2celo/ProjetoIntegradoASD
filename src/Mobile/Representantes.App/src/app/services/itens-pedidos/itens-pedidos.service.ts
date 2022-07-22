@@ -51,8 +51,8 @@ export class ItensPedidosService {
     let sql = `
       SELECT 
         ip.id,
-        ip.preco / 100 AS valor_unitario,
-        (ip.preco / 100) * ip.quantidade AS valor_total,
+        ip.preco AS valor_unitario,
+        (ip.preco) * ip.quantidade AS valor_total,
         ip.quantidade,
         p.codigo,
         p.descricao
@@ -72,6 +72,8 @@ export class ItensPedidosService {
           let itens: any[] = [];
           for (var i = 0; i < data.rows.length; i++) {
             var item = data.rows.item(i);
+            item.valor_unitario = item.valor_unitario / 100;
+            item.valor_total = item.valor_total / 100;
             itens.push(item);
           }
           return itens;

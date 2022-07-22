@@ -7,6 +7,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  
+  <ion-list>
+    <ion-item *ngFor="let produto of listProdutos">
+      <ion-label class="ion-text-wrap">
+        <h3>Codigo: {{ produto.codigo }}</h3>
+        <h3>Descrição: {{ produto.descricao }}</h3>
+        <h3>Preço: {{ produto.preco / 100 | currency : 'R$' }}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
