@@ -8,6 +8,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 export abstract class PaginaBase implements OnInit {
 
+  public isLoading = false;
   protected isoDateFormat: string = "YYYY-MM-DD[T]HH:mm:ss.SSS";
   
   constructor(
@@ -15,6 +16,31 @@ export abstract class PaginaBase implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  async mostrarLoading(message: string) {
+    this.isLoading = true;
+
+    return await this._loadingController.create({
+      spinner: "bubbles",
+      message: message,
+      translucent: true
+    }).then(loading => {
+      loading.present().then(() => {
+        if (!this.isLoading) {
+          this.esconderLoading();
+        }
+      });
+    });
+  }
+
+  async esconderLoading() {
+    this.isLoading = false;
+    try {
+      await this._loadingController.dismiss();
+    } catch (ex) {
+      console.log(ex);
+    }
   }
 
   protected normalizarDataString(data: string) {

@@ -12,4 +12,8 @@ export class SairPage implements OnInit {
   ngOnInit() {
   }
 
+  sair(){
+    
+  }
+
 }

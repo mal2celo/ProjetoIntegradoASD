@@ -8,5 +8,20 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <div class="ion-text-center ion-padding">
+          <h1 class="ion-text-center">Deseja realmente sair da aplicação e voltar para a tela de login?</h1>
+        </div>
+      </ion-col>
+      <ion-col size="12" size-sm="12" push-md="3" size-md="6" push-lg="4" size-lg="4" push-xl="4" size-xl="4">
+        <ion-button color="danger" size="large" expand="block" (click)="sair()">
+          <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+          Sair
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
