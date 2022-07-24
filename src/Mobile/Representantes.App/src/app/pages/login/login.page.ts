@@ -50,7 +50,9 @@ export class LoginPage implements OnInit {
           else {
             //Salva o token
             this.salvarToken(result.Token).then(() => {
-              this.router.navigate(['principal']);
+              this.menuCtrl.enable(true).then(() => {
+                this.router.navigate(['principal']);
+              });
             });
           }
           

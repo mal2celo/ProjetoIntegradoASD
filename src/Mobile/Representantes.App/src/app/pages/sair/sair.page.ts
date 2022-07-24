@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Storage } from '@capacitor/storage';
+import { DatabaseService } from 'src/app/services/database/database';
 
 @Component({
   selector: 'app-sair',
@@ -7,13 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SairPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private db: DatabaseService,
+  ) { }
 
   ngOnInit() {
   }
 
   sair(){
-    
+    this.apagarToken().then(() => {
+      this.db.resetDb().then(() => {
+        this.router.navigate(['login']);
+      });
+    });
   }
 
+  async apagarToken() {
+    await Storage.remove({ key: 'Token' });
+  };
 }

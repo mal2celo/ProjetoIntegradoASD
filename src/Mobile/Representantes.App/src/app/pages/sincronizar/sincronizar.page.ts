@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { PaginaBase } from 'src/app/base.page';
 import { SincronizacaoService } from 'src/app/services/sincronizacao/sincronizacao.service';
@@ -13,7 +14,8 @@ export class SincronizarPage extends PaginaBase {
 
   constructor(
     _loadingController: LoadingController,
-    public sincronizacaoService: SincronizacaoService
+    public sincronizacaoService: SincronizacaoService,
+    private router: Router,
   ) { 
     super(_loadingController);
   }
@@ -26,6 +28,7 @@ export class SincronizarPage extends PaginaBase {
       this.sincronizacaoService.sincronizar()
       .then( () => {
         this.mostrarMensagemSucesso("Sincronização realizada com sucesso!");
+        this.router.navigate(['principal']);
       })
       .finally(() => {
         this.esconderLoading();
