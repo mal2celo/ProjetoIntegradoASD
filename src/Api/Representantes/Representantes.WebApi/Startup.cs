@@ -67,6 +67,7 @@ namespace Representantes.WebApi
             });
 
             services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<ISincronismoService, SincronismoService>();
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 

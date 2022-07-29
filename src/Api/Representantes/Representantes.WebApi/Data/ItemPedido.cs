@@ -10,7 +10,7 @@
 
         public int Quantidade { get; set; }
 
-        public double ValorVenda { get; set; }
+        public int ValorVenda { get; set; }
 
         public virtual Pedido Pedido { get; set; }
 

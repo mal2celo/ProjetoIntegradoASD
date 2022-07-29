@@ -12,7 +12,7 @@ using Representantes.Data;
 namespace Representantes.WebApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220520020624_Inicial")]
+    [Migration("20220729030638_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,9 +32,6 @@ namespace Representantes.WebApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Cpf")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Endereco")
                         .HasColumnType("nvarchar(max)");
 
@@ -44,6 +41,26 @@ namespace Representantes.WebApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Clientes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Endereco = "Estrada Real, KM 50, Tiradentes - MG",
+                            Nome = "Fazenda de Teste 001"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Endereco = "Sitio de Teste, Suzano - SP",
+                            Nome = "Sitio de Teste 1005"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Endereco = "Fazenda 10, Sem Numero Juiz de Fora - MG",
+                            Nome = "Teste de Fazenda 10"
+                        });
                 });
 
             modelBuilder.Entity("Representantes.WebApi.Data.ItemPedido", b =>
@@ -63,9 +80,8 @@ namespace Representantes.WebApi.Migrations
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
 
-                    b.Property<double>("ValorVenda")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("float(10)");
+                    b.Property<int>("ValorVenda")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -113,13 +129,15 @@ namespace Representantes.WebApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Nome")
+                    b.Property<int>("Codigo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descricao")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<double>("Preco")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("float(10)");
+                    b.Property<int>("Preco")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -129,32 +147,37 @@ namespace Representantes.WebApi.Migrations
                         new
                         {
                             Id = 1,
-                            Nome = "Ração 001",
-                            Preco = 100.0
+                            Codigo = 100,
+                            Descricao = "Ração 001",
+                            Preco = 10000
                         },
                         new
                         {
                             Id = 2,
-                            Nome = "Medicamento 001",
-                            Preco = 89.5
+                            Codigo = 200,
+                            Descricao = "Medicamento 001",
+                            Preco = 8950
                         },
                         new
                         {
                             Id = 3,
-                            Nome = "Equipamento 001",
-                            Preco = 500.0
+                            Codigo = 300,
+                            Descricao = "Equipamento 001",
+                            Preco = 50000
                         },
                         new
                         {
                             Id = 4,
-                            Nome = "EPI 001",
-                            Preco = 50.0
+                            Codigo = 400,
+                            Descricao = "EPI 001",
+                            Preco = 5000
                         },
                         new
                         {
                             Id = 5,
-                            Nome = "EPI 002",
-                            Preco = 20.0
+                            Codigo = 500,
+                            Descricao = "EPI 002",
+                            Preco = 2000
                         });
                 });
 

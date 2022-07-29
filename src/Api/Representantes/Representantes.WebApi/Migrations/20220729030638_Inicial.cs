@@ -16,7 +16,6 @@ namespace Representantes.WebApi.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Cpf = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Endereco = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -30,8 +29,9 @@ namespace Representantes.WebApi.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Preco = table.Column<double>(type: "float(10)", precision: 10, scale: 2, nullable: false)
+                    Codigo = table.Column<int>(type: "int", nullable: false),
+                    Descricao = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Preco = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -89,7 +89,7 @@ namespace Representantes.WebApi.Migrations
                     PedidoId = table.Column<int>(type: "int", nullable: true),
                     ProdutoId = table.Column<int>(type: "int", nullable: true),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
-                    ValorVenda = table.Column<double>(type: "float(10)", precision: 10, scale: 2, nullable: false)
+                    ValorVenda = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -107,15 +107,25 @@ namespace Representantes.WebApi.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Produtos",
-                columns: new[] { "Id", "Nome", "Preco" },
+                table: "Clientes",
+                columns: new[] { "Id", "Endereco", "Nome" },
                 values: new object[,]
                 {
-                    { 1, "Ração 001", 100.0 },
-                    { 2, "Medicamento 001", 89.5 },
-                    { 3, "Equipamento 001", 500.0 },
-                    { 4, "EPI 001", 50.0 },
-                    { 5, "EPI 002", 20.0 }
+                    { 1, "Estrada Real, KM 50, Tiradentes - MG", "Fazenda de Teste 001" },
+                    { 2, "Sitio de Teste, Suzano - SP", "Sitio de Teste 1005" },
+                    { 3, "Fazenda 10, Sem Numero Juiz de Fora - MG", "Teste de Fazenda 10" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Produtos",
+                columns: new[] { "Id", "Codigo", "Descricao", "Preco" },
+                values: new object[,]
+                {
+                    { 1, 100, "Ração 001", 10000 },
+                    { 2, 200, "Medicamento 001", 8950 },
+                    { 3, 300, "Equipamento 001", 50000 },
+                    { 4, 400, "EPI 001", 5000 },
+                    { 5, 500, "EPI 002", 2000 }
                 });
 
             migrationBuilder.InsertData(

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Representantes.WebApi.Data
+﻿namespace Representantes.WebApi.Models
 {
-    public class Produto
+    public class ProdutoModel
     {
         public int Id { get; set; }
 
