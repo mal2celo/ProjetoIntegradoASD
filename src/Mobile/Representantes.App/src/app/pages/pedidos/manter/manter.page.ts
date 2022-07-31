@@ -50,7 +50,7 @@ export class ManterPage extends PaginaBase {
         this.pedidos.get(params["id"])
         .then((result: any) => {
           this.model = result;
-          this.model.data = this.normalizarDataString(this.model.data);
+          this.model.data_pedido = this.normalizarDataString(this.model.data_pedido);
           this.getListas();
         });
       }else{
@@ -80,7 +80,9 @@ export class ManterPage extends PaginaBase {
         });
       }else{
         this.pedidos.getMaxId().then((id: number) => {
+          console.log("Salvando, id ", id);
           if(id>0){
+            this.model.status = 1;
             this.pedidos.insert(this.model).then(() => {
               this.model.id = id;
               this.mostrarMensagemSucesso("Pedido cadastrado com sucesso! Utilize o botão + para adicionar itens a este pedido.");
@@ -96,7 +98,7 @@ export class ManterPage extends PaginaBase {
   detalheItemPedido(id: number){
     console.log("Id do item pedido ", id);
     this.itensPedidos.get(id).then((itemPedido: ItemPedido) => {
-      itemPedido.preco = itemPedido.preco / 100;
+      itemPedido.valor_venda = itemPedido.valor_venda / 100;
       this.informarItemPedido(itemPedido);
     });
   }
@@ -130,8 +132,8 @@ export class ManterPage extends PaginaBase {
   public getData() {
     let data = new Date();
 
-    if (this.model.data) {
-      data = moment(this.model.data).toDate();
+    if (this.model.data_pedido) {
+      data = moment(this.model.data_pedido).toDate();
     }
 
     this.datePicker.show({
@@ -140,7 +142,7 @@ export class ManterPage extends PaginaBase {
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
     }).then(
       date => {
-        this.model.data = moment(date).format(this.isoDateFormat);
+        this.model.data_pedido = moment(date).format(this.isoDateFormat);
       },
       () => { }
     );
@@ -149,7 +151,7 @@ export class ManterPage extends PaginaBase {
   carregarValidadores(){
     this.pedidoFormGroup = this.formBuilder.group({
       cliente_id: ['', Validators.compose([Validators.required])],
-      data: ['', Validators.compose([])],
+      data_pedido: ['', Validators.compose([])],
       observacao: ['', Validators.compose([ Validators.maxLength(500) ])],
     });
   }

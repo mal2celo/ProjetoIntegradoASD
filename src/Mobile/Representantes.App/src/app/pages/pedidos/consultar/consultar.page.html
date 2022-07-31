@@ -12,7 +12,7 @@
     <ion-item *ngFor="let pedido of listPedidos" (click)="detalhePedido(pedido.id)">
       <ion-label class="ion-text-wrap">
         <h3>Pedido Nº: {{ pedido.id }}</h3>
-        <h3>Data: {{ pedido.data | date: 'dd/MM/yyyy'}}</h3>
+        <h3>Data: {{ pedido.data_pedido | date: 'dd/MM/yyyy'}}</h3>
         <h3>Status: {{ pedido.desc_status }}</h3>
         <h3>Cliente: {{ pedido.nome_cliente }}</h3>
       </ion-label>

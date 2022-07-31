@@ -69,6 +69,10 @@ namespace Representantes.WebApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Observacao")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<int?>("PedidoId")
                         .HasColumnType("int");
 
@@ -103,6 +107,10 @@ namespace Representantes.WebApi.Migrations
 
                     b.Property<DateTime>("DataPedido")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Observacao")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<int?>("RepresentanteId")
                         .HasColumnType("int");

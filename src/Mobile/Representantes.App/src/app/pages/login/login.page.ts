@@ -49,7 +49,7 @@ export class LoginPage implements OnInit {
           }
           else {
             //Salva o token
-            this.salvarToken(result.Token).then(() => {
+            this.salvarToken(result).then(() => {
               this.menuCtrl.enable(true).then(() => {
                 this.router.navigate(['principal']);
               });
@@ -88,10 +88,18 @@ export class LoginPage implements OnInit {
     }
   }
 
-  async salvarToken(token: string) {
+  async salvarToken(result: any) {
     await Storage.set({
       key: 'Token',
-      value: token
+      value: result.token
+    });
+    await Storage.set({
+      key: 'Representante',
+      value: result.matricula + " - " + result.nome
+    });
+    await Storage.set({
+      key: 'RepresentanteID',
+      value: result.id
     });
   }
 }

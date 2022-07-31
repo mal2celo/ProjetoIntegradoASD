@@ -12,6 +12,8 @@
 
         public int ValorVenda { get; set; }
 
+        public string Observacao { get; set; }
+
         public virtual Pedido Pedido { get; set; }
 
         public virtual Produto Produto { get; set; }

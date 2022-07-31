@@ -14,6 +14,8 @@ namespace Representantes.WebApi.Data
 
         public int? RepresentanteId { get; set; }
 
+        public string Observacao { get; set; }
+
         public virtual Cliente Cliente { get; set; }
 
         public virtual Usuario Representante { get; set; }

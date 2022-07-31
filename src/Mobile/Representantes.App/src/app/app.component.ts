@@ -27,6 +27,7 @@ export class AppComponent {
     { title: 'Sair', url: '/sair', icon: 'exit' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  public representanteLogado = "";
   
   constructor(
     private platform: Platform,
@@ -38,6 +39,10 @@ export class AppComponent {
     private itensPedidos: ItensPedidosService,
   ) {
     this.initializeApp();
+  }
+
+  ionViewWillEnter() {
+    
   }
 
   initializeApp() {
@@ -64,7 +69,13 @@ export class AppComponent {
       let token = Storage.get({ key: 'Token' });
       token.then(a => {
         if(a.value){
-          console.log(a.value);
+          let representante = Storage.get({ key: 'Representante' });
+          representante.then(a => {
+            if(a.value){
+              this.representanteLogado = a.value;
+            }
+          });
+
           this.router.navigate(['principal']);
         }
         else{
@@ -72,7 +83,6 @@ export class AppComponent {
         }
       });
     });
-
   }
 
   limparECarregarTeste(){
@@ -110,8 +120,8 @@ export class AppComponent {
       ip.id = count;
       ip.pedido_id = pedido_id;
       ip.produto_id = count;
-      ip.preco = this.numeroRandomicoNoIntervalor(10, 100);
       ip.quantidade = this.numeroRandomicoNoIntervalor(10, 100);
+      ip.valor_venda = this.numeroRandomicoNoIntervalor(10, 100);
       ip.observacao = "Item pedido de teste " + count;
       this.itensPedidos.insert(ip);
     }
@@ -125,7 +135,7 @@ export class AppComponent {
       let p = new Pedido();
       p.cliente_id = this.numeroRandomicoNoIntervalor(1, 10);
       p.status = this.numeroRandomicoNoIntervalor(1, 4);
-      p.data = moment(data).format(isoDateFormat);
+      p.data_pedido = moment(data).format(isoDateFormat);
       p.observacao = "Teste de Pedido " + count;
       this.pedidos.insert(p).then((row: any) => {
         this.carragarItemPedidoTeste(count);

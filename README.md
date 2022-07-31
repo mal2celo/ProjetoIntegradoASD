@@ -1,7 +1,9 @@
 # ProjetoIntegradoASD
 Projeto Integrado da Pós-graduação Lato Sensu em Arquitetura de Software Distribuído da PUC Minas 2021-2022
 
-# Comandos para migration da API
+# WEB API
+
+## Comandos para migration da API
 Criar migration Inicial
 add-migration Inicial
 
@@ -15,3 +17,9 @@ drop table Pedidos;
 drop table Produtos;
 drop table Clientes;
 drop table Usuarios;
+
+
+# APP Mobile
+
+## Comandos para build
+ionic serve

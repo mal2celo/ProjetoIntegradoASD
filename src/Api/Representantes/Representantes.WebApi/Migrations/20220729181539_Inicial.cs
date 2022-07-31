@@ -63,7 +63,8 @@ namespace Representantes.WebApi.Migrations
                     DataPedido = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     ClienteId = table.Column<int>(type: "int", nullable: true),
-                    RepresentanteId = table.Column<int>(type: "int", nullable: true)
+                    RepresentanteId = table.Column<int>(type: "int", nullable: true),
+                    Observacao = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -89,7 +90,8 @@ namespace Representantes.WebApi.Migrations
                     PedidoId = table.Column<int>(type: "int", nullable: true),
                     ProdutoId = table.Column<int>(type: "int", nullable: true),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
-                    ValorVenda = table.Column<int>(type: "int", nullable: false)
+                    ValorVenda = table.Column<int>(type: "int", nullable: false),
+                    Observacao = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {

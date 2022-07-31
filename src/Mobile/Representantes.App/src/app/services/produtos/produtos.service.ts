@@ -9,8 +9,8 @@ export class ProdutosService {
   constructor(private databaseService: DatabaseService) { }
 
   public insert(pObj: Produto) {
-    let sql = `insert into Produto (codigo, descricao, preco) values (?, ?, ?)`;
-    let data = [pObj.codigo, pObj.descricao, pObj.preco];
+    let sql = `insert into Produto (id, codigo, descricao, preco) values (?, ?, ?, ?)`;
+    let data = [pObj.id, pObj.codigo, pObj.descricao, pObj.preco];
 
     return this.databaseService.db.executeSql(sql, data)
       .catch((e) => console.error(e));

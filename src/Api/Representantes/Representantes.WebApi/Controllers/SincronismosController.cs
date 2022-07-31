@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Representantes.WebApi.Data;
 using Representantes.WebApi.Helpers;
 using Representantes.WebApi.Models;
 using Representantes.WebApi.Services;
@@ -22,7 +23,8 @@ namespace Representantes.WebApi.Controllers
         [HttpPost("sincronizar")]
         public IActionResult PostSincronizar(SincronizarRequest sincronizar)
         {
-            var response = _sincronismoService.Sincronizar(sincronizar);
+            var user = (Usuario)this.ControllerContext.HttpContext.Items["User"];
+            var response = _sincronismoService.Sincronizar(sincronizar, user);
 
             if (response == null)
                 return BadRequest(new { message = "Não foi possível sincronizar." });

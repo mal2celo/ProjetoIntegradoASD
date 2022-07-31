@@ -1,11 +1,14 @@
 @startuml Diagrama de Classe Mobile
-skinparam SameClassWidth true
+title Diagrama de Classe do Aplicativo Mobile
+
+left to right direction
 
 class Pedido {
   id: number
-  cliente_id: number
-  data: string
   status: number
+  data_pedido: string
+  cliente_id: number
+  representante_id: number
   observacao: string
 }
 
@@ -13,8 +16,8 @@ class ItemPedido {
   id: number
   pedido_id: number
   produto_id: number
-  preco: number
   quantidade: number
+  valor_venda: number
   observacao: string
 }
 
@@ -31,8 +34,8 @@ class Cliente {
   endereco: string
 }
 
-Cliente "1" <-- "0..*" Pedido
-Pedido "1" --> "1..*" ItemPedido
-ItemPedido "0..*" --> "1" Produto
+Cliente "1" <--- "0..*" Pedido
+Pedido "1" ---> "1..*" ItemPedido
+ItemPedido "0..*" ---> "1" Produto
 
 @enduml

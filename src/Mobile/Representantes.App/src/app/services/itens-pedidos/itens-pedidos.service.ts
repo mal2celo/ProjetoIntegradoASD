@@ -8,16 +8,16 @@ export class ItensPedidosService {
   constructor(private databaseService: DatabaseService) { }
 
   public insert(pObj: ItemPedido) {
-    let sql = `insert into ItemPedido (pedido_id, produto_id, preco, quantidade, observacao) values (?, ?, ?, ?, ?)`;
-    let data = [pObj.pedido_id, pObj.produto_id, pObj.preco, pObj.quantidade, pObj.observacao];
+    let sql = `insert into ItemPedido (pedido_id, produto_id, quantidade, valor_venda, observacao) values (?, ?, ?, ?, ?)`;
+    let data = [pObj.pedido_id, pObj.produto_id, pObj.quantidade, pObj.valor_venda, pObj.observacao];
 
     return this.databaseService.db.executeSql(sql, data)
       .catch((e) => console.error(e));
   }
 
   public update(pObj: ItemPedido) {
-    let sql = `update ItemPedido set pedido_id = ?, produto_id = ?, preco = ?, quantidade = ?, observacao = ? where id = ?`;
-    let data = [pObj.pedido_id, pObj.produto_id, pObj.preco, pObj.quantidade, pObj.observacao, pObj.id];
+    let sql = `update ItemPedido set pedido_id = ?, produto_id = ?, quantidade = ?, valor_venda = ?, observacao = ? where id = ?`;
+    let data = [pObj.pedido_id, pObj.produto_id, pObj.quantidade, pObj.valor_venda, pObj.observacao, pObj.id];
 
     return this.databaseService.db.executeSql(sql, data)
       .catch((e) => console.error(e));
@@ -35,8 +35,8 @@ export class ItensPedidosService {
           obj.id = item.id;
           obj.pedido_id = item.pedido_id;
           obj.produto_id = item.produto_id;
-          obj.preco = item.preco;
           obj.quantidade = item.quantidade;
+          obj.valor_venda = item.valor_venda;
           obj.observacao = item.observacao;
 
           return obj;
@@ -51,8 +51,8 @@ export class ItensPedidosService {
     let sql = `
       SELECT 
         ip.id,
-        ip.preco AS valor_unitario,
-        (ip.preco) * ip.quantidade AS valor_total,
+        ip.valor_venda AS valor_unitario,
+        (ip.valor_venda) * ip.quantidade AS valor_total,
         ip.quantidade,
         p.codigo,
         p.descricao
@@ -86,20 +86,20 @@ export class ItensPedidosService {
 }
 
 export class ItemPedido {
-  id: number
-  pedido_id: number
-  produto_id: number
-  preco: number
-  quantidade: number
-  observacao: string
+  id: number;
+  pedido_id: number;
+  produto_id: number;
+  quantidade: number;
+  valor_venda: number;
+  observacao: string;
 
   constructor(pJson: any = null) {
     if (pJson != null) {
       this.id = pJson.id;
       this.pedido_id = pJson.pedido_id;
       this.produto_id = pJson.produto_id;
-      this.preco = pJson.preco;
       this.quantidade = pJson.quantidade;
+      this.valor_venda = pJson.valor_venda;
       this.observacao = pJson.observacao;
     }
   }

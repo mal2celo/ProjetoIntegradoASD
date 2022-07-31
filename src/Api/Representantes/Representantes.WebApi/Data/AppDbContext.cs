@@ -47,6 +47,14 @@ namespace Representantes.Data
                     new Cliente { Id = 3, Nome = "Teste de Fazenda 10", Endereco = "Fazenda 10, Sem Numero Juiz de Fora - MG" }
                 );
 
+            modelBuilder.Entity<Pedido>()
+                .Property(p => p.Observacao)
+                    .HasMaxLength(200);
+
+            modelBuilder.Entity<ItemPedido>()
+                .Property(p => p.Observacao)
+                    .HasMaxLength(200);
+
             modelBuilder.Entity<Usuario>()
                 .Property(p => p.Nome)
                     .HasMaxLength(100);

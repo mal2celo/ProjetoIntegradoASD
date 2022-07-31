@@ -12,7 +12,7 @@ using Representantes.Data;
 namespace Representantes.WebApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220729030638_Inicial")]
+    [Migration("20220729181539_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,6 +71,10 @@ namespace Representantes.WebApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Observacao")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<int?>("PedidoId")
                         .HasColumnType("int");
 
@@ -105,6 +109,10 @@ namespace Representantes.WebApi.Migrations
 
                     b.Property<DateTime>("DataPedido")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Observacao")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<int?>("RepresentanteId")
                         .HasColumnType("int");

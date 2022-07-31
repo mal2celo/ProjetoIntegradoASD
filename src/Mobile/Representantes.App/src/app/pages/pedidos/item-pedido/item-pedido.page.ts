@@ -56,7 +56,7 @@ export class ItemPedidoPage extends PaginaBase {
   salvar(): void {
     this.submetido = true;
     if (this.itemPedidoFormGroup.valid) {
-      this.model.preco = this.model.preco * 100;
+      this.model.valor_venda = this.model.valor_venda * 100;
       if(this.model.id > 0){
         this.itensPedidos.update(this.model).then(() => {
           this.modalCtrl.dismiss({
@@ -79,7 +79,7 @@ export class ItemPedidoPage extends PaginaBase {
     this.itemPedidoFormGroup = this.formBuilder.group({
       produto_id: ['', Validators.compose([Validators.required])],
       observacao: ['', Validators.compose([ Validators.maxLength(500) ])],
-      preco: ['', [Validators.required, Validators.pattern('\\d{1,6}(\\.\\d{1,2})?'), Validators.max(99999.99), Validators.min(1)]],
+      valor_venda: ['', [Validators.required, Validators.pattern('\\d{1,6}(\\.\\d{1,2})?'), Validators.max(99999.99), Validators.min(1)]],
       quantidade: ['', Validators.compose([Validators.required])],
     });
   }

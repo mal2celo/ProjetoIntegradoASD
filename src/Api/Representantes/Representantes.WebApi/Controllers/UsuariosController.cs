@@ -27,13 +27,5 @@ namespace Representantes.WebApi.Controllers
 
             return Ok(response);
         }
-
-        [Authorize]
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var users = _userService.GetAll();
-            return Ok(users);
-        }
     }
 }

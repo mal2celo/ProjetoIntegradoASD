@@ -15,6 +15,8 @@ namespace Representantes.WebApi.Models
 
         public int? RepresentanteId { get; set; }
 
+        public string Observacao { get; set; }
+
         public List<ItemPedidoModel> Itens { get; set; }
     }
 }

@@ -9,8 +9,8 @@ export class ClientesService {
   constructor(private databaseService: DatabaseService) { }
 
   public insert(pObj: Cliente) {
-    let sql = `insert into Cliente (nome, endereco) values (?, ?)`;
-    let data = [pObj.nome, pObj.endereco];
+    let sql = `insert into Cliente (id, nome, endereco) values (?, ?, ?)`;
+    let data = [pObj.id, pObj.nome, pObj.endereco];
 
     return this.databaseService.db.executeSql(sql, data)
       .catch((e) => console.error(e));
@@ -81,4 +81,3 @@ export class Cliente {
     }
   }
 }
-
