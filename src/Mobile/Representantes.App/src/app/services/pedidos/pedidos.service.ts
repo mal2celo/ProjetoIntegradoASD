@@ -17,6 +17,14 @@ export class PedidosService {
       .catch((e) => console.error(e));
   }
 
+  public insertComId(pObj: Pedido) {
+    let sql = `insert into Pedido (id, status, data_pedido, cliente_id, representante_id, observacao) values (?, ?, ?, ?, ?, ?)`;
+    let data = [pObj.id, pObj.status, pObj.data_pedido, pObj.cliente_id, pObj.representante_id, pObj.observacao];
+
+    return this.databaseService.db.executeSql(sql, data)
+      .catch((e) => console.error(e));
+  }
+
   public update(pObj: Pedido) {
     let sql = `update Pedido set status = ?, data_pedido = ?, cliente_id = ?, representante_id = ?, observacao = ? where id = ?`;
     let data = [pObj.status, pObj.data_pedido, pObj.cliente_id, pObj.representante_id, pObj.observacao, pObj.id];
@@ -180,9 +188,9 @@ export class Pedido {
     if (pJson != null) {
       this.id = pJson.id;
       this.status = pJson.status;
-      this.data_pedido = pJson.data_pedido;
-      this.cliente_id = pJson.cliente_id;
-      this.representante_id = pJson.representante_id;
+      this.data_pedido = pJson.dataPedido;
+      this.cliente_id = pJson.clienteId;
+      this.representante_id = pJson.representanteId;
       this.observacao = pJson.observacao;
     }
   }

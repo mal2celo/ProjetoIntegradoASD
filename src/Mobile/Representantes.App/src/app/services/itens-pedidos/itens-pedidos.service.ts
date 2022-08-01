@@ -15,6 +15,14 @@ export class ItensPedidosService {
       .catch((e) => console.error(e));
   }
 
+  public insertComId(pObj: ItemPedido) {
+    let sql = `insert into ItemPedido (id, pedido_id, produto_id, quantidade, valor_venda, observacao) values (?, ?, ?, ?, ?, ?)`;
+    let data = [pObj.id, pObj.pedido_id, pObj.produto_id, pObj.quantidade, pObj.valor_venda, pObj.observacao];
+
+    return this.databaseService.db.executeSql(sql, data)
+      .catch((e) => console.error(e));
+  }
+
   public update(pObj: ItemPedido) {
     let sql = `update ItemPedido set pedido_id = ?, produto_id = ?, quantidade = ?, valor_venda = ?, observacao = ? where id = ?`;
     let data = [pObj.pedido_id, pObj.produto_id, pObj.quantidade, pObj.valor_venda, pObj.observacao, pObj.id];
@@ -96,10 +104,10 @@ export class ItemPedido {
   constructor(pJson: any = null) {
     if (pJson != null) {
       this.id = pJson.id;
-      this.pedido_id = pJson.pedido_id;
-      this.produto_id = pJson.produto_id;
+      this.pedido_id = pJson.pedidoId;
+      this.produto_id = pJson.produtoId;
       this.quantidade = pJson.quantidade;
-      this.valor_venda = pJson.valor_venda;
+      this.valor_venda = pJson.valorVenda;
       this.observacao = pJson.observacao;
     }
   }

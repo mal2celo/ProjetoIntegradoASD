@@ -68,4 +68,13 @@ export abstract class PaginaBase implements OnInit {
       heightAuto: false
     });
   }
+
+  protected mostrarMensagemInformacao(pMensagem: string) {
+    Swal.fire({
+      title: 'Atenção!',
+      text: pMensagem,
+      icon: 'info',
+      heightAuto: false
+    });
+  }
 }

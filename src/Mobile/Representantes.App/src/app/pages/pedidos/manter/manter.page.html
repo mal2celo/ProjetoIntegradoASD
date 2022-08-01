@@ -23,7 +23,7 @@
 
               <!--Campo Data-->
               <ion-col size="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
-                <ion-item lines="full" (click)='getData()'>
+                <ion-item lines="full" (click)='getData()' [disabled]="isDisabled">
                   <ion-label position="stacked">Data do Pedido</ion-label>
                   <span block text-left>{{model.data_pedido | date: 'dd/MM/yyyy'}}</span>
                 </ion-item>
@@ -34,7 +34,7 @@
                 <ion-item lines="full" class="no-ion-padding">
                   <ion-label position="stacked">Cliente</ion-label>
                   <ion-select class="select-full-width" [interfaceOptions]="{header:'Cliente'}" [(ngModel)]="model.cliente_id" name="cliente_id"
-                    formControlName="cliente_id" cancelText="Cancelar">
+                    formControlName="cliente_id" cancelText="Cancelar" [disabled]="isDisabled">
                     <ion-select-option *ngFor="let item of listClientes" [value]="item.id">
                       {{item.nome}}
                     </ion-select-option>
@@ -46,7 +46,7 @@
               <ion-col size="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
                 <ion-item lines="full">
                   <ion-label position="stacked">Observação</ion-label>
-                  <ion-textarea name="observacao" formControlName="observacao" [(ngModel)]="model.observacao"></ion-textarea>
+                  <ion-textarea name="observacao" formControlName="observacao" [(ngModel)]="model.observacao" [disabled]="isDisabled"></ion-textarea>
                 </ion-item>
               </ion-col>
 
@@ -58,7 +58,7 @@
             <ion-col size="10"><h1>Itens do pedido</h1></ion-col>
             <ion-col size="2">
               <div class="ion-text-end">
-                <ion-button icon-start size="large" fill="clear" (click)="informarItemPedido(null)">
+                <ion-button icon-start size="large" fill="clear" (click)="informarItemPedido(null)" [disabled]="isDisabled">
                   <ion-icon name="add-circle-outline"></ion-icon>
                 </ion-button>
               </div>
@@ -67,7 +67,7 @@
           <ion-row class="parent-row">
             <ion-col size="12">
               <ion-list>
-                <ion-item *ngFor="let pedido of listItems" (click)="detalheItemPedido(pedido.id)">
+                <ion-item *ngFor="let pedido of listItems" (click)="detalheItemPedido(pedido.id)" [disabled]="isDisabled">
                   <ion-label class="ion-text-wrap">
                     <h3>Descrição: {{ pedido.descricao }}</h3>
                     <h3>Quantidade: {{ pedido.quantidade}}</h3>
@@ -82,7 +82,7 @@
 
         <ion-row class="item-formulario">
           <ion-col size="12" size-sm="12" push-md="3" size-md="6" push-lg="4" size-lg="4" push-xl="4" size-xl="4">
-            <ion-button size="large" expand="block" (click)="salvar()">
+            <ion-button size="large" expand="block" (click)="salvar()" [disabled]="isDisabled">
               <ion-icon slot="start" name="arrow-forward-outline"></ion-icon>
               Salvar
             </ion-button>

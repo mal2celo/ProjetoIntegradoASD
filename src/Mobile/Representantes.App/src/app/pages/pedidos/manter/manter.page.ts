@@ -10,6 +10,7 @@ import { PaginaBase } from 'src/app/base.page';
 import { Pedido, PedidosService } from 'src/app/services/pedidos/pedidos.service';
 import { Cliente, ClientesService } from 'src/app/services/clientes/clientes.service';
 import { ItemPedidoPage } from '../item-pedido/item-pedido.page';
+import { StatusPedido } from 'src/app/enums/Enums';
 
 @Component({
   selector: 'app-manter',
@@ -22,6 +23,7 @@ export class ManterPage extends PaginaBase {
   listClientes: any[] = [];
   listItems: any[] = [];
   submetido: boolean;
+  isDisabled: boolean = false;
 
   constructor(
     _loadingController: LoadingController,
@@ -52,6 +54,22 @@ export class ManterPage extends PaginaBase {
           this.model = result;
           this.model.data_pedido = this.normalizarDataString(this.model.data_pedido);
           this.getListas();
+          this.isDisabled = this.model.status > 1;
+          if(this.model.status > 1){
+            let mensagem = "O pedido não pode ser modificado.";
+            switch(this.model.status){
+              case StatusPedido.Enviado:
+                mensagem = "O pedido já foi enviado e não pode ser modificado.";
+                break;
+                case StatusPedido.Aprovado:
+                mensagem = "O pedido está aprovado e não pode ser modificado.";
+                break;
+                case StatusPedido.Reprovado:
+                mensagem = "O pedido está reprovado e não pode ser modificado.";
+                break;
+            }
+            this.mostrarMensagemInformacao(mensagem);
+          }
         });
       }else{
         this.getListas();
