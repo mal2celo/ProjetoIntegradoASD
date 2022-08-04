@@ -1,0 +1,33 @@
+<header>
+  <div id="intro" class="bg-image shadow-2-strong">
+    <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.7);">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-5 col-md-8">
+            <form class="bg-white rounded shadow-5-strong p-5" (ngSubmit)="onSubmit()" #form="ngForm">
+
+              <div class="form-outline mb-4 text-center">
+                <h1>Representantes</h1>
+              </div>
+
+              <div class="form-group mb-4">
+                <label class="form-label" for="matricula">Usuário</label>
+                <input autofocus type="email" id="matricula" name="matricula" class="form-control" style="text-transform:uppercase" autocomplete="off" [(ngModel)]="login.matricula" required />
+              </div>
+
+              <div class="form-group mb-4">
+                <label class="form-label" for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" class="form-control" autocomplete="off" [(ngModel)]="login.senha" required />
+              </div>
+
+              <div class="form-outline mb-4">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="form.form.invalid">Entrar</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

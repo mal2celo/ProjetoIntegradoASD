@@ -3,14 +3,32 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './account/login/login.component';
+import { SpinnerComponent } from './layout/spinner/spinner.component';
+import { HomeComponent } from './layout/home/home.component';
+import { AuthenticationComponent } from './layout/authentication/authentication.component';
+import { PrincipalComponent } from './principal/principal.component';
+import { PedidoValidarComponent } from './pedido/pedido-validar/pedido-validar.component';
+import { PedidoConsultarComponent } from './pedido/pedido-consultar/pedido-consultar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    SpinnerComponent,
+    HomeComponent,
+    AuthenticationComponent,
+    PrincipalComponent,
+    PedidoValidarComponent,
+    PedidoConsultarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
