@@ -69,10 +69,12 @@
               <ion-list>
                 <ion-item *ngFor="let pedido of listItems" (click)="detalheItemPedido(pedido.id)" [disabled]="isDisabled">
                   <ion-label class="ion-text-wrap">
+                    <h3>Codig: {{ pedido.codigo }}</h3>
                     <h3>Descrição: {{ pedido.descricao }}</h3>
                     <h3>Quantidade: {{ pedido.quantidade}}</h3>
                     <h3>Valor Unitário: {{ pedido.valor_unitario | currency : 'R$' }}</h3>
                     <h3>Valor Total: {{ pedido.valor_total | currency : 'R$' }}</h3>
+                    <h3>Observação: {{ pedido.observacao }}</h3>
                   </ion-label>
                 </ion-item>
               </ion-list>

@@ -107,7 +107,7 @@ namespace Representantes.WebApi.Services
         private List<PedidoModel> ConsultarPedidos()
         {
             List<PedidoModel> list = new List<PedidoModel>();
-            var pedidos = _context.Pedidos.Where(a => a.Representante.Id == _user.Id).ToList();
+            var pedidos = _context.Pedidos.Where(a => a.Representante.Id == _user.Id).OrderByDescending(a => a.Id).ToList();
 
             foreach (var pedido in pedidos)
             {

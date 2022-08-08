@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
   dadosDoUsuario(){
     let payloadToken: any = this.accountService.getPayloadToken();
     if(payloadToken){
-      console.log(payloadToken);
       if(payloadToken.nome){
         this.nomeUsuario = payloadToken.nome;
         this.primeiroNomeUsuario = this.nomeUsuario.split(' ')[0];

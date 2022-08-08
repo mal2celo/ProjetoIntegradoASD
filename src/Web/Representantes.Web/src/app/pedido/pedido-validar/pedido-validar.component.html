@@ -1,1 +1,50 @@
-<p>pedido-validar works!</p>
+<div style="margin-top: 1em;" *ngIf="pedido" >
+  
+  <h3>Pedido Nº: {{pedido.id}}</h3>
+  
+  <div>
+    <div class="row">
+      <div class="col">
+        <h5>Cliente: {{ pedido.nomeCliente }}</h5>
+        <h5>Data: {{ pedido.dataPedido | date: 'dd/MM/yyyy' }}</h5>
+        <h5>Status: {{ pedido.descStatus }} </h5>
+      </div>
+      <div class="col">
+        <h5>Quantidade de Itens: {{ pedido.quantidadeItens }}</h5>
+        <h5>Quantidade de Produtos: {{ pedido.quantidadeProdutos }}</h5>
+        <h5>Valor Total: {{ pedido.valorTotal / 100 | currency : 'BRL'}}</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-success me-md-2" type="button" (click)="aprovar()" [disabled]="pedido.status !== 2">Aprovar Pedido</button>
+        <button class="btn btn-danger" type="button" (click)="reprovar()" [disabled]="pedido.status !== 2">Reprovar Pedido</button>
+      </div>
+    </div>
+
+  </div>
+  
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Valor (R$)</th>
+        <th scope="col">Valor Total (R$)</th>
+        <th scope="col">Observação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of pedido.itens">
+        <td>{{ item.codigoProduto }}</td>
+        <td>{{ item.descricaoProduto }}</td>
+        <td>{{ item.quantidade }}</td>
+        <td>{{ item.valorVenda / 100 | currency : 'BRL'}}</td>
+        <td>{{ item.quantidade * item.valorVenda / 100 | currency : 'BRL'}}</td>
+        <td>{{ item.observacao }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

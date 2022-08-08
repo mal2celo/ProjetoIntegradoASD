@@ -94,8 +94,8 @@ export class PedidosService {
               case StatusPedido.Elaboracao:
                 pedido.desc_status = "Em Elaboração";
                 break;
-              case StatusPedido.Enviado:
-                pedido.desc_status = "Enviado";
+              case StatusPedido.AguardandoAprovacao:
+                pedido.desc_status = "Aguardando Aprovação";
                 break;
               case StatusPedido.Aprovado:
                 pedido.desc_status = "Aprovado";

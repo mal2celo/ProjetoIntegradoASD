@@ -1,1 +1,30 @@
-<p>pedido-consultar works!</p>
+<div style="margin-top: 1em;">
+  
+  <div class="card-body">
+    <h3>Pedidos</h3>
+  </div>
+
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Pedido Nº</th>
+        <th scope="col">Data</th>
+        <th scope="col">Status</th>
+        <th scope="col">Cliente</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pedido of pedidos">
+        <td>{{ pedido.id }}</td>
+        <td>{{ pedido.dataPedido | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ pedido.descStatus }}</td>
+        <td>{{ pedido.nomeCliente }}</td>
+      <td class="text-center text-nowrap">
+        <button type="button" class="btn btn-primary btn-sm" (click)="detalhesPedido(pedido.id)">Ver Pedido</button>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -58,8 +58,8 @@ export class ManterPage extends PaginaBase {
           if(this.model.status > 1){
             let mensagem = "O pedido não pode ser modificado.";
             switch(this.model.status){
-              case StatusPedido.Enviado:
-                mensagem = "O pedido já foi enviado e não pode ser modificado.";
+              case StatusPedido.AguardandoAprovacao:
+                mensagem = "O pedido está aguardando aprovação e não pode ser modificado.";
                 break;
                 case StatusPedido.Aprovado:
                 mensagem = "O pedido está aprovado e não pode ser modificado.";

@@ -29,17 +29,20 @@
             {{item.label}}
           </a>
         </li>
-
-        <li class="nav-item dropdown"  style="text-align: end;">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            {{nomeUsuario}}
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Sair</a></li>
-          </ul>
-        </li>
+      </ul>
+      <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{nomeUsuario}}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Sair</a></li>
+            </ul>
+          </li>
       </ul>
     </div>
   </div>
 </nav>
-<router-outlet></router-outlet>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

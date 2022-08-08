@@ -63,7 +63,8 @@ export class ItensPedidosService {
         (ip.valor_venda) * ip.quantidade AS valor_total,
         ip.quantidade,
         p.codigo,
-        p.descricao
+        p.descricao,
+        ip.observacao
       FROM 
         ItemPedido ip
         INNER JOIN Produto p
