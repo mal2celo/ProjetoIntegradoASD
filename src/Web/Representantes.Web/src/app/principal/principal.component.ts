@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AccountService } from '../account/shared/account.service';
 
 @Component({
@@ -11,6 +13,7 @@ export class PrincipalComponent implements OnInit {
   nomeUsuario: string = "";
   constructor(
     private accountService: AccountService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -24,6 +27,10 @@ export class PrincipalComponent implements OnInit {
         this.nomeUsuario = payloadToken.nome;
       } 
     }
+  }
+
+  consultarPedidos(){
+    this.router.navigate(['pedido_consultar']);
   }
 
 }

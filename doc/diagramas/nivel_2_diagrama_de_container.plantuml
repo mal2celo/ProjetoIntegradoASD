@@ -1,25 +1,31 @@
-@startuml
+@startuml Diagrama de Contexto
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
-!define ICONURL https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v2.4.0
-!includeurl ICONURL/devicons/go.puml
 
-AddRelTag("async", $lineStyle = DashedLine())
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
 
-SHOW_PERSON_PORTRAIT()
 
-Person(client,"Representante","Realiza os pedidos de insumos agrículas nas fazendas.")
-Person(user,"Administrador","Aprova ou reprova os pedidos realizados pelos respresentantes.")
+!include DEVICONS/angular.puml
+!include DEVICONS/ionic.puml
+!include DEVICONS/dotnet.puml
+!include DEVICONS/msql_server.puml
 
-System(backend,"Sistema de Pedidos Off-line para Insumos Agrícolas","Sistema que recebe a solicitação de pagamento")
+Person(representante,"Representante","Um representante de insumos agrícolas em atendimento a uma fazenda.")
+Person(administrador,"Administrador","Um funcionário da empresa responsável pela análise dos pedidos.")
 
-ContainerDb_Ext(sqlserver, "Banco de dados da empresa ")
+System_Boundary(c1, "Sistema offline para representantes") {
+    Container(web_app, "Aplicação Web", "Angular", "Aplicação para analizar os pedidos.", $sprite="angular")
+    Container(mobile_app, "Aplicação Mobile", "IONIC", "Aplicação para realizar os pedidos.", $sprite="ionic")
+    Container(api, "API Web", ".Net 6", "Web api para prover métodos para a aplicaçao web e mobile.", $sprite="dotnet")
+    ContainerDb(db, "Banco de dados", "Microsoft SQL", "Banco de dados da empresa com os dados dos clientes, produtos e pedidos", $sprite="msql_server")
 
-Rel(user,backend,"solicita dados das transações em","HTTPS")
-Rel(backend,sqlserver,"Recebe dados dos pedidos","SQL Server Protocol")
+    Rel(administrador,web_app,"Realiza a analise dos pedidos em","HTTPS")
+    Rel(representante,mobile_app,"Utiliza o aplicativo para cadastrar os pedidos e sincronizar os dados com o servidor","HTTPS")
 
-Rel(client,backend,"solicita pagamento em","HTTP/JSON")
+    Rel(web_app,api,"Acessa a API para consultar os pedidos, aprovar ou reprovar","HTTPS/JSON")
+    Rel(mobile_app,api,"Acessa a API para realizar a sincronização dos dados.","HTTPS/JSON")
 
-Rel(backend,processor,"envia dados de pagamento para","Através do Kafka pelo tópico transactions",$tags = "async")
-Rel(processor,backend,"envia resultado da transação","Através do Kafka pelo tópico transactions_result",$tags = "async")
+    Rel_R(api, db, "Lê e grava dados em")
+}
+
 
 @enduml

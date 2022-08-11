@@ -1,8 +1,6 @@
 @startuml Diagrama de Contexto
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-SHOW_PERSON_PORTRAIT()
-
 Person(representante,"Representante","Um representante de inssumos agrícolas em atendimento a uma fazenda.")
 Person(administrador,"Administrador","Um funcionário da empresa responsável pela análise dos pedidos.")
 
