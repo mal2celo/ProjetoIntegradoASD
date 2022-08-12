@@ -23,9 +23,11 @@
 
               <!--Campo Data-->
               <ion-col size="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
-                <ion-item lines="full" (click)='getData()' [disabled]="isDisabled">
-                  <ion-label position="stacked">Data do Pedido</ion-label>
-                  <span block text-left>{{model.data_pedido | date: 'dd/MM/yyyy'}}</span>
+                <ion-label>Data do Pedido</ion-label>
+                <ion-item (click)='getData()' lines="full">
+                  <label></label>
+                  <ion-icon slot="end" name="calendar-outline"></ion-icon>
+                  <span class="rerum-date" text-left>{{model.data_pedido | date: 'dd/MM/yyyy'}}</span>
                 </ion-item>
               </ion-col>
 

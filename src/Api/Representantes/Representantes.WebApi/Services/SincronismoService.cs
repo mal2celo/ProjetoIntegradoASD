@@ -53,6 +53,7 @@ namespace Representantes.WebApi.Services
                     ItemPedido ip = new ItemPedido();
 
                     ip.Pedido = pedido;
+                    ip.Pedido.Id = pedido.Id;
                     ip.Quantidade = itemPedidoModel.Quantidade;
                     ip.ValorVenda = itemPedidoModel.ValorVenda;
                     ip.ProdutoId = itemPedidoModel.ProdutoId;

@@ -39,6 +39,8 @@ export class ManterPage extends PaginaBase {
     super(_loadingController);
     
     this.model = new Pedido();
+    let data = new Date();
+    this.model.data_pedido = moment(data).format(this.isoDateFormat);
 
     this.carregarValidadores();
   }

@@ -14,11 +14,11 @@ import { DatePickerMock } from './mocks/date-picker.mock';
 import { Capacitor } from '@capacitor/core';
 
 export function getSQLite() {
-  return Capacitor.platform == 'web' ? { provide: SQLite, useClass: SQLiteMock } : SQLite;
+  return Capacitor.getPlatform() === 'web' ? { provide: SQLite, useClass: SQLiteMock } : SQLite;
 }
 
 export function getDatePicker() {
-  return Capacitor.platform == 'web' ? { provide: DatePicker, useClass: DatePickerMock } : DatePicker;
+  return Capacitor.getPlatform() === 'web' ? { provide: DatePicker, useClass: DatePickerMock } : DatePicker;
 }
 
 import {LOCALE_ID, DEFAULT_CURRENCY_CODE} from '@angular/core';
