@@ -2,7 +2,7 @@
 Projeto Integrado da Pós-graduação Lato Sensu em Arquitetura de Software Distribuído da PUC Minas 2021-2022
 
 # Web API
-## Comandos para migration da API
+### Comandos para migration da API
 Criar migration Inicial 'add-migration Inicial'
 Executar migrations 'update-database'
 
@@ -17,10 +17,13 @@ drop table Usuarios;
 ```
 
 # Aplicativo Móvel
-## Comandos para build
+### Comandos para build
+```
 ionic serve
-
+```
 
 # Aplicação WEB 
-## Comandos para build
+### Comandos para build
+```
 ng serve
+```
