@@ -10,5 +10,6 @@
     <WebStackScaffolding_DbContextTypeFullName>Representantes.Data.AppDbContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
+    <NameOfLastUsedPublishProfile>D:\POS\16 - Projeto Integrado\ProjetoIntegrado\src\Api\Representantes\Representantes.WebApi\Properties\PublishProfiles\RepresentantesWebApi - Zip Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

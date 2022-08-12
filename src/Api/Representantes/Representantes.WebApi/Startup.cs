@@ -95,6 +95,9 @@ namespace Representantes.WebApi
 
             app.UseAuthorization();
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
