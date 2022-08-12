@@ -1,0 +1,24 @@
+@startuml Diagrama de Classe Sincronismo API
+
+circle Sincornizacao
+
+class SincronismosController
+
+abstract class ControllerBase
+
+interface ISincronismoService
+
+class SincronismoService
+
+class AppDbContext
+
+Sincornizacao --> SincronismosController
+ControllerBase <|-- SincronismosController
+SincronismosController --> ISincronismoService : utiliza
+ISincronismoService <|-- SincronismoService
+SincronismoService --> SincronizarRequest : recebe
+SincronismoService --> AppDbContext : usa
+SincronismoService --> SincronizarResponse : responde
+DbContext <|-- AppDbContext  
+
+@enduml
