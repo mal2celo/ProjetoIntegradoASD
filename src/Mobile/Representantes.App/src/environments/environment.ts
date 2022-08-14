@@ -4,4 +4,4 @@ export const environment = {
 
 export const DB_NAME = "representantes.db";
 
-export const SERVER_URL = 'https://representanteswebapi.azurewebsites.net/api/v1';
+export const SERVER_URL = 'http://localhost:64087/api/v1';
